@@ -1,8 +1,10 @@
-## Create a BaseEfCoreRepository class that inherits from the standard EfCoreRepository class
+## A BaseEfCoreRepository class that inherits from EfCoreRepository
 
 ## Introduction
 
-Today, I wanted to know if the content of a table in the database had changed or not. I ended up with creating a ComputeHash method that returns a different hash when the content of a table in the database has been updated. After I created this ComputeHash method, I asked myself, how can I expose this method to my other Repository classes? This is the solution that I came up with.
+Today, I wanted to know if the content of a table in the database had changed or not. I ended up with creating a **ComputeHash** method that returns a different hash when the content of a table in the database has been updated.
+
+After I created this method, I asked myself, how can I expose this method to my other Repository classes? This is the solution that I came up with.
 
 Keep in mind that, the code in this article is by no means **production-ready**, as I wanted to keep the example simple to understand. And the ComputeHash method has also room for improvement.
 
@@ -115,7 +117,9 @@ namespace BookStore.BaseEfCoreRepo
 
 ```
 
-## Create a folder **Interfaces** in the **Domain project** and add the interface **IHaveGetHashAsyncRepository.cs**
+## Interface **IHaveGetHashAsyncRepository.cs**
+
+Create a folder **Interfaces** in the **Domain project** and add the interface **IHaveGetHashAsyncRepository.cs**
 
 Every Repository that implements the **IHaveGetHashAsyncRepository** interface will need to implement the **GetHashAsync** method
 
@@ -247,7 +251,7 @@ namespace BookStore.Books
 }
 ```
 
-I added the GetHashAsync method in the BookAppService only for testing purposes.
+I added the **GetHashAsync** method in the BookAppService only for testing purposes.
 
 ## Testing
 
@@ -256,7 +260,7 @@ Navigate to the **api/app/book/hash endpoint** in the Swagger page.
 
 Click first on the **Try it out** button and then on the **Execute** button.
 
-The **GetHashAsync** method in the **BookAppService** will be hit and will return every time the same hash string when you have the same 2 books in the database.
+The **GetHashAsync** method in the **BookAppService** will be hit and should return every time the same hash string when you have the same 2 books in the database.
 
 If you delete one of them, the method will return another hash.
 
