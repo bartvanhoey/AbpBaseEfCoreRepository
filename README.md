@@ -6,7 +6,7 @@ Today, I wanted to know if the content of a table in the database had changed or
 
 After I created this method, I asked myself, how can I expose this method to my other Repository classes? This is the solution that I came up with.
 
-Keep in mind that, the code in this article is by no means **production-ready**, as I wanted to keep the example simple to understand. And the ComputeHash method has also room for improvement.
+Keep in mind that, the code in this article is **by no means production-ready**, as I wanted to keep the example simple to understand. And the ComputeHash method has also room for improvement.
 
 ## Source Code
 
@@ -159,7 +159,7 @@ namespace BookStore.Domain.Books
 
 ## BookRepository in the **EntityFrameworkCore project**
 
-Create an **BookRepository** class in the **Books** folder of the **EntityFrameworkCore** project.
+Create a **BookRepository** class in the **Books** folder of the **EntityFrameworkCore** project.
 Let the **BookRepository** class inherit from the **BaseEfCoreRepository** class you created, and also implement the **IBookRepository** interface.
 
 When you implement the **IBookRepository** interface you will need to have a **GetHashAsync** method in your **BookRepository** class.
